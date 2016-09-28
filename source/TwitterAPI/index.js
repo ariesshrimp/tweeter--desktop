@@ -28,27 +28,31 @@ const app = Firebase.initializeApp({
 */
 export function storeTweet(tweet) {
   const notes = Firebase.database().ref(tweet.id)
-  return notes.set(note)
-}
-
-
-/* @returns <Twitter Response Obj> with explicit twitter URL attached
-*/
-export function addExternalLink(tweet) {
-  return {
-    externalURL: `https://www.twitter.com/joseph_fraley/status/${ tweet.id_str }`,
-    tweet
-  }
+  return notes.set(tweet)
 }
 
 
 /* @returns <Twit Promise> with result = <Twitter Response Obj>
 */
-export function postTweet(text) {
+export function postTweet(status, media_ids) {
   console.log('posting a tweet')
-
+  console.log(status, media_ids)
   return twitter.post('statuses/update', {
-    status: text,
+    status,
+    media_ids,
     trim_user: true
+  })
+}
+
+
+
+export function postPhoto(file_path, status) {
+  console.log('posting some media')
+  console.log(file_path)
+  return new Promise((resolve, reject) => {
+    twitter.postMediaChunked({ file_path }, function(error, data, response) {
+      if (error) reject(error)
+      else resolve(data)
+    })
   })
 }

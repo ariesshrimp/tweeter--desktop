@@ -7,7 +7,7 @@ import TweetForm from './components/TweetForm/index.js'
 
 function App(props) {
   return <div id="react-app-root">
-    <h1>Hello, from React!</h1>
+    <h1 className="heading">Tweeter</h1>
     <TweetForm />
   </div>
 }
