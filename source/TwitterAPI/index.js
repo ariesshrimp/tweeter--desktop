@@ -1,16 +1,16 @@
 'use strict'
 import Twitter from 'twit'
 import Firebase from 'firebase'
-import Config from './config.json'
+import CONFIG from './config.json'
 
 /* API console: https://apps.twitter.com/app/12881539/show
 */
-const twitter = new Twitter(Config.twitter)
+const twitter = new Twitter(CONFIG.twitter)
 
 
 /* API console: https://console.firebase.google.com/project/tweeter-80d2b/database/data
 */
-const app = Firebase.initializeApp(config.firebase)
+const app = Firebase.initializeApp(CONFIG.firebase)
 
 
 /* @returns Firebase Promise of <Void>

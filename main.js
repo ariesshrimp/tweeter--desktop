@@ -7,7 +7,7 @@ let mainWindow
 
 function createWindow() {
   mainWindow = new BrowserWindow({
-    width: 300, height: 220,
+    width: 300, height: 250,
     "web-preferences" : {
       "web-security" : false
     }

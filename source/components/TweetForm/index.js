@@ -11,12 +11,12 @@ function handleSubmit(event) {
   const status = form.value
 
   // Grab the photo, if it's there
-  const photo = document.getElementById('photo').files[0]
+  const photo = document.getElementById('file').files[0]
   const path = photo ? photo.path : undefined
 
   // Reset the form
   form.value = ''
-  document.getElementById('photo').value = ''
+  document.getElementById('file').value = ''
   document.getElementById('remaining').innerHTML = `140 remaining`
 
   // If there's a photo, post a media tweet
@@ -59,10 +59,12 @@ function handleTyping(event) {
 export default function TweetForm() {
   return <div id="form">
     <textarea id="tweetForm" maxLength="140" placeholder="What's on your mind?" required onChange={ handleTyping }></textarea>
-    <div>
+    <div className="column">
       <span id="remaining">140 remaining</span>
-      <input type="file" id="photo" />
-      <button onClick={ handleSubmit }>Tweet</button>
+      <div className="row">
+        <input type="file" id="file" />
+        <button onClick={ handleSubmit }>Tweet</button>
+      </div>
     </div>
   </div>
 }

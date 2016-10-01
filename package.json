@@ -1,8 +1,11 @@
 {
+  "productName": "Tweet",
+  "version": "0.1.0",
   "main": "main.js",
   "scripts": {
     "start": "electron .",
-    "build": "webpack"
+    "build": "webpack",
+    "package": "electron-packager . --all --out ~/Desktop/Tweeter --overwrite"
   },
   "devDependencies": {
     "babel-core": "^6.14.0",
@@ -10,6 +13,7 @@
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
     "electron": "^1.3.4",
+    "electron-packager": "^8.0.0",
     "json-loader": "^0.5.4",
     "webpack": "^1.13.2"
   },
