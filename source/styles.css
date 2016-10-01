@@ -1,0 +1,81 @@
+@font-face {
+  font-family: 'Operator';
+  src: local('Operator Mono');
+}
+
+* {
+  box-sizing: border-box;
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+*:hover, *:focus {
+  outline: none;
+}
+
+body {
+  font-family: 'Operator';
+}
+
+.heading {
+  text-align: center;
+  background: #1DA1F2;
+  color: white;
+  font-style: italic;
+}
+
+#form {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#tweetForm {
+  font-family: 'Operator';
+  margin: 1em;
+  padding: 1em;
+  border: 1px solid #1DA1F2;
+  border-radius: 2px;
+  width: 270px;
+  height: 83px;
+}
+
+#remaining {
+  color: #4e4e4e;
+  font-size: 0.7em;
+  width: 100%;
+  margin-bottom: 0.5em;
+}
+
+#file {
+  width: 50%;
+}
+
+button {
+  border: none;
+  box-shadow: none;
+  border-radius: 2px;
+  padding: 1em;
+  background: #1DA1F2;
+  color: white;
+  width: 30%;
+}
+
+button:hover {
+  background: black;
+}
+
+.column {
+  display: flex;
+  flex-flow: column;
+  width: 270px;
+}
+
+.row {
+  display: flex;
+  flex-flow: row;
+  justify-content: space-between;
+  align-items: center;
+}
