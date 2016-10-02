@@ -1,4 +1,5 @@
 'use strict'
+import FS from 'fs'
 import Twitter from 'twit'
 import Firebase from 'firebase'
 import CONFIG from './config.json'
@@ -16,8 +17,9 @@ const app = Firebase.initializeApp(CONFIG.firebase)
 /* @returns Firebase Promise of <Void>
 */
 export function storeTweet(tweet) {
-  const notes = Firebase.database().ref(tweet.id)
-  return notes.set(tweet)
+  const note = Firebase.database().ref(tweet.id)
+  const firebaseNote = note.set(tweet)
+
 }
 
 

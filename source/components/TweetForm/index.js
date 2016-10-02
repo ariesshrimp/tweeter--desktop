@@ -33,11 +33,12 @@ function handleSubmit(event) {
       .then(function handleFirebaseResponse() {
         console.log('Firebase sync successful!')
       })
+      .catch(error => console.error(error))
   }
 
   // If there isn't, post a normal tweet
   else {
-    return postTweet(tweet, path)
+    return postTweet(status)
       .then(function handleTwitterResponse(result) {
         console.log('Successfully posted tweet!')
         console.log(result.data)
@@ -47,6 +48,7 @@ function handleSubmit(event) {
       .then(function handleFirebaseResponse() {
         console.log('Firebase sync successful!')
       })
+      .catch(error => console.error(error))
   }
 }
 
@@ -61,7 +63,7 @@ export default function TweetForm() {
     <textarea id="tweetForm" maxLength="140" placeholder="What's on your mind?" required onChange={ handleTyping }></textarea>
     <div className="column">
       <span id="remaining">140 remaining</span>
-      <div className="row">
+      <div className="column">
         <input type="file" id="file" />
         <button onClick={ handleSubmit }>Tweet</button>
       </div>
