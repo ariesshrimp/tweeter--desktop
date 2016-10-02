@@ -2,3 +2,4 @@ gcloud.config.json
 config.json
 public
 node_modules/
+bundle.js
