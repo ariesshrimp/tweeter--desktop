@@ -50,7 +50,7 @@ body {
 }
 
 #file {
-  width: 50%;
+  width: 100%;
 }
 
 button {
@@ -61,6 +61,7 @@ button {
   background: #1DA1F2;
   color: white;
   width: 30%;
+  align-self: flex-end;
 }
 
 button:hover {
@@ -75,7 +76,7 @@ button:hover {
 
 .row {
   display: flex;
-  flex-flow: row;
+  flex-flow: column;
   justify-content: space-between;
   align-items: center;
 }
