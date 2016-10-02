@@ -16,10 +16,17 @@ const app = Firebase.initializeApp(CONFIG.firebase)
 
 /* @returns Firebase Promise of <Void>
 */
-export function storeTweet(tweet) {
-  const note = Firebase.database().ref(tweet.id)
+export function storeTweet({tweet, media}) {
+  console.log(tweet, media)
+  const note = Firebase.database().ref(tweet.id.toString())
   const firebaseNote = note.set(tweet)
 
+  if (media) {
+    console.log('uploading picture to storage...')
+    const storage = Firebase.storage().ref(tweet.id.toString())
+    return storage.put(media)
+  }
+  else { return firebaseNote }
 }
 
 

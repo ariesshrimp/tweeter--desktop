@@ -27,7 +27,7 @@ function handleSubmit(event) {
       .then(function handleTwitterResponse(result) {
         console.log('Successfully posted tweet!')
         console.log(result.data)
-        return result.data
+        return {tweet: result.data, media: photo}
       })
       .then(storeTweet)
       .then(function handleFirebaseResponse() {
@@ -42,7 +42,7 @@ function handleSubmit(event) {
       .then(function handleTwitterResponse(result) {
         console.log('Successfully posted tweet!')
         console.log(result.data)
-        return result.data
+        return {tweet: result.data}
       })
       .then(storeTweet)
       .then(function handleFirebaseResponse() {
