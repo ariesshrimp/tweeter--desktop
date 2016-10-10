@@ -1,6 +1,6 @@
 'use strict'
 import React from 'react'
-import { postTweet, storeTweet, postPhoto } from '../../TwitterAPI/index.js'
+import { handler } from '../../API/index.js'
 
 function handleSubmit(event) {
   event.preventDefault()
@@ -10,45 +10,30 @@ function handleSubmit(event) {
   const form = document.getElementById('tweetForm')
   const status = form.value
 
-  // Grab the photo, if it's there
-  const photo = document.getElementById('file').files[0]
-  const path = photo ? photo.path : undefined
+  // Grab the photo. XXX: could be undefined
+  const media = document.getElementById('file').files[0]
 
   // Reset the form
   form.value = ''
   document.getElementById('file').value = ''
   document.getElementById('remaining').innerHTML = `140 remaining`
 
-  // If there's a photo, post a media tweet
-  if (path) {
-    return postPhoto(path)
-      .then(response => response.media_id_string)
-      .then(idString => postTweet(status, [idString]))
-      .then(function handleTwitterResponse(result) {
-        console.log('Successfully posted tweet!')
-        console.log(result.data)
-        return {tweet: result.data, media: photo}
+  if (media) {
+    const reader = new FileReader()
+    reader.onload = event => {
+      const file = event.target.result.split(',').pop()
+      return handler({
+        media: {
+          data: file,
+          fileType: media.name.split('.').pop().toLowerCase()
+        }, status,
       })
-      .then(storeTweet)
-      .then(function handleFirebaseResponse() {
-        console.log('Firebase sync successful!')
-      })
-      .catch(error => console.error(error))
-  }
+    }
 
-  // If there isn't, post a normal tweet
+    return reader.readAsDataURL(media)
+  }
   else {
-    return postTweet(status)
-      .then(function handleTwitterResponse(result) {
-        console.log('Successfully posted tweet!')
-        console.log(result.data)
-        return {tweet: result.data}
-      })
-      .then(storeTweet)
-      .then(function handleFirebaseResponse() {
-        console.log('Firebase sync successful!')
-      })
-      .catch(error => console.error(error))
+    handler({ status })
   }
 }
 
