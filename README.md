@@ -11,3 +11,6 @@ It is predominately used for publishing content to my personal site: https://www
 There's also a React Native mobile app which borrows all the logic.
 
 I might abstract that part into a Lambda function.
+
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/joefraley/tweeter--desktop.svg)](https://greenkeeper.io/)
